@@ -1,0 +1,18 @@
+# macOS Finder files
+**/.DS_Store
+
+# Neovim generated files
+.config/nvim/*.json
+.config/nvim/**/*.DS_Store
+
+# nnn runtime artifacts
+.config/nnn/bookmarks
+.config/nnn/mounts
+.config/nnn/sessions
+
+# Machine-specific or sensitive directories
+.ssh/
+.gnupg/
+.aws/
+.local/
+.cache/

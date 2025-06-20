@@ -1,0 +1,36 @@
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zprofile.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zprofile.pre.zsh"
+emulate sh
+source ~/.profile
+emulate zsh
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home
+export PATH=$PATH:/Users/michael/Library/Python/3.12/bin
+source /opt/homebrew/opt/autoenv/activate.sh
+
+##### ~/.zprofile #####
+eval "$(pyenv init --path)"
+
+##### ~/.zshrc #####
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+local brew_path="/opt/homebrew/bin"
+local brew_opt_path="/opt/homebrew/opt"
+local nvm_path="$HOME/.nvm"
+export PATH="${brew_path}:${PATH}"
+export NVM_DIR="${nvk_path}"
+export GROOVY_HOME=/opt/homebrew/opt/groovy/libexec
+[ -s "${brew_opt_path}/nvm/nvm.sh" ] && . "${brew_opt_path}/nvm/nvm.sh" # This loads nvm
+[ -s "${brew_opt_path} /nvm/etc/bash_completion.d/nvm" ] && . "${brew_opt_path}/nvm//etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+
+# Added by Toolbox App
+export DOTNET_ROOT=/usr/local/share/dotnet/sdk/8.0.401
+export PATH="$PATH:/Users/michael/Library/Application Support/JetBrains/Toolbox/scripts"
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zprofile.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zprofile.post.zsh"
