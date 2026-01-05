@@ -1,0 +1,11 @@
+# AnsiWeather configuration
+# NOTE: ansiweather only supports colon-delimited keys (key:value)
+#       key=value will be silently ignored.
+#
+# Source: https://github.com/fcambus/ansiweather
+
+location:Erie,US
+units:imperial
+key:{{ .openweather_api_key }}
+symbols:true
+forecast:5
