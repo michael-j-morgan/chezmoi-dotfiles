@@ -12,3 +12,5 @@ alias serve="python3 -m http.server 8000"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias t='todo.sh'
 alias weather="curl wttr.in/ERI"
+alias dj='djournal'
+alias dje='djournal-edit'
