@@ -5,3 +5,9 @@
 .cache
 .vscode/extensions
 .rustup/toolchains
+Library/Caches
+go/pkg/mod
+.local/share/mise/installs
+.local/share/NuGet/http-cache
+.local/share/nvim
+.nuget/packages
