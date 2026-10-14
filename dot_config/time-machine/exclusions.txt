@@ -1,0 +1,7 @@
+# Time Machine exclusions
+# Paths are relative to $HOME.
+# Include only reproducible data.
+
+.cache
+.vscode/extensions
+.rustup/toolchains

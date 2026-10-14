@@ -14,5 +14,4 @@
 .ssh/
 .gnupg/
 .aws/
-.local/
 .cache/

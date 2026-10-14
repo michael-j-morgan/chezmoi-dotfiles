@@ -1,0 +1,58 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+manifest="$HOME/.config/time-machine/exclusions.txt"
+
+usage() {
+    echo "Usage: tm-exclusions {check|apply}"
+    exit 1
+}
+
+[[ $# -eq 1 ]] || usage
+[[ "$1" == "check" || "$1" == "apply" ]] || usage
+
+[[ -f "$manifest" ]] || {
+    echo "Manifest not found: $manifest" >&2
+    exit 1
+}
+
+action="$1"
+failures=0
+
+while IFS= read -r entry || [[ -n "$entry" ]]; do
+    [[ -z "$entry" || "$entry" == \#* ]] && continue
+
+    # Accept only home-relative paths.
+    case "$entry" in
+        /*|..|../*|*/../*|*/..)
+            echo "Invalid manifest entry: $entry" >&2
+            failures=$((failures + 1))
+            continue
+            ;;
+    esac
+
+    path="$HOME/$entry"
+
+    if [[ ! -e "$path" ]]; then
+        echo "MISSING  $path"
+        failures=$((failures + 1))
+        continue
+    fi
+
+    if [[ "$action" == "apply" ]]; then
+        /usr/bin/sudo /usr/bin/tmutil addexclusion -p "$path"
+    fi
+
+    result=$(/usr/bin/tmutil isexcluded "$path")
+
+    if [[ "$result" == *"[Excluded]"* ]]; then
+        echo "EXCLUDED $path"
+    else
+        echo "INCLUDED $path"
+        failures=$((failures + 1))
+    fi
+
+done < "$manifest"
+
+exit $((failures > 0))
