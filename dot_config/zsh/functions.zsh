@@ -124,15 +124,19 @@ ditch() {
 
     if mv -- "$file" "$target"; then
       {
-        echo
-        echo "### $timestamp"
-        echo "- **Abandoned:** \`$original_path\`"
-        echo "  - Reason: $reason"
+  	echo
+  	echo "### $timestamp"
+  	echo
+  	echo "- **Abandoned:** \`$original_path\`"
+  	echo "  - Reason: $reason"
 
-        if [[ "${target:t}" != "$basename" ]]; then
-          echo "  - Trash name: \`${target:t}\`"
-        fi
+  	if [[ "${target:t}" != "$basename" ]]; then
+    	  echo "  - Trash name: \`${target:t}\`"
+  	fi
+
+  	echo
       } >> "$journal"
+
 
       echo "Trashed and journaled: $basename"
     else
