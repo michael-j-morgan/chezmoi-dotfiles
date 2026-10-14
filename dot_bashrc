@@ -1,5 +1,5 @@
 # Kiro CLI pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/profile.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/profile.pre.bash"
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bash.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bash.pre.bash"
 
 if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
     . "$HOME/.config/fabric/fabric-bootstrap.inc"
@@ -9,4 +9,4 @@ fi
 [[ -f "$HOME/fig-export/dotfiles/dotfile.bash" ]] && source "$HOME/fig-export/dotfiles/dotfile.bash"
 
 # Kiro CLI post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/profile.post.bash"
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/bash.post.bash" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/bash.post.bash"
